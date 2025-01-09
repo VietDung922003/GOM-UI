@@ -140,7 +140,7 @@ export default function Home() {
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: '#B1AFFF',
   },
   mainContainer: {
     flex: 1,
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
   searchContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#E8E8E8',
+    backgroundColor: '#FFFFFF',
     margin: 16,
     borderRadius: 8,
     paddingHorizontal: 12,
@@ -237,7 +237,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   eventCard: {
-    backgroundColor: '#FFF',
+    backgroundColor: '#FFFFFF',
     borderRadius: 12,
     marginBottom: 16,
     overflow: 'hidden',
