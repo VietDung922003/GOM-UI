@@ -1,6 +1,7 @@
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image, ScrollView, SafeAreaView, StatusBar } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Ionicons } from '@expo/vector-icons';
+import BottomNavigation from './components/BottomNavigation';
 
 export default function Home() {
   const router = useRouter();
@@ -105,44 +106,7 @@ export default function Home() {
           </ScrollView>
 
           {/* Bottom Navigation */}
-          <View style={styles.bottomNav}>
-            <TouchableOpacity style={styles.navItem}>
-              <Ionicons name="home" size={24} color="#007AFF" />
-              <Text style={[styles.navText, styles.activeNavText]}>Trang chủ</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.navItem}
-              onPress={() => router.push('postView')}
-            >
-              <Ionicons name="calendar" size={24} color="#666" />
-              <Text style={styles.navText}>Ký ức</Text>
-            </TouchableOpacity>
-
-            {/* Nút chụp hình ở giữa */}
-            <TouchableOpacity 
-              style={styles.captureButton}
-              onPress={() => router.push('cameraView')}
-            >
-              <View style={styles.captureButtonInner}>
-                <View style={styles.captureButtonOuterRing} />
-              </View>
-            </TouchableOpacity>
-
-            <TouchableOpacity 
-              style={styles.navItem}
-              onPress={() => router.push('photoView')}
-            >
-              <Ionicons name="images" size={24} color="#666" />
-              <Text style={styles.navText}>Ảnh</Text>
-            </TouchableOpacity>
-            <TouchableOpacity 
-              style={styles.navItem}
-              onPress={() => router.push('profileView')}
-            >
-              <Ionicons name="person" size={24} color="#666" />
-              <Text style={styles.navText}>Tài khoản</Text>
-            </TouchableOpacity>
-          </View>
+          <BottomNavigation />
         </View>
       </SafeAreaView>
     </>
@@ -165,7 +129,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#F5F5F5',
     margin: 16,
-    borderRadius: 8,
+    borderRadius: 20,
     paddingHorizontal: 12,
     borderWidth: 1,
     borderColor: '#E5E5E5',
@@ -191,10 +155,11 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#B1AFFF',
+    color: '#8483BC',
   },
   seeAll: {
-    color: '#000000',
+    color: '#5F5E85',
+    fontWeight: '600',
   },
   servicesScroll: {
     paddingLeft: 16,
@@ -212,7 +177,7 @@ const styles = StyleSheet.create({
   serviceTitle: {
     fontSize: 14,
     textAlign: 'center',
-    color: '#333',
+    color: '#646060',
   },
   qrSection: {
     backgroundColor: '#FFF',
@@ -280,6 +245,7 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     fontWeight: '500',
+    color: '#7271AE',
   },
   bottomNav: {
     position: 'absolute',

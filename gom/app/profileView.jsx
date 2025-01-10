@@ -2,16 +2,15 @@ import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import BottomNavigation from './components/BottomNavigation';
 
-export default function profileView() {
+export default function ProfileView() {
   const router = useRouter();
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => router.back()}>
-          <Ionicons name="chevron-back" size={24} color="#FFFFFF" />
-        </TouchableOpacity>
+        <View style={{ width: 24 }} />
         <Text style={styles.headerTitle}>Tài khoản</Text>
         <View style={{ width: 24 }} />
       </View>
@@ -47,6 +46,8 @@ export default function profileView() {
           </View>
         </View>
       </View>
+
+      <BottomNavigation />
     </SafeAreaView>
   );
 }
@@ -75,40 +76,42 @@ const styles = StyleSheet.create({
     paddingTop: 20,
   },
   avatarContainer: {
-    width: 120,
-    height: 120,
-    borderRadius: 60,
+    width: 75,
+    height: 75,
+    borderRadius: 50,
     overflow: 'hidden',
-    marginBottom: 16,
+    marginBottom: 12,
   },
   avatar: {
     width: '100%',
     height: '100%',
   },
   name: {
-    fontSize: 24,
+    fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 32,
+    marginBottom: 24,
+    color: '#8483BC',
   },
   infoSection: {
     width: '100%',
     paddingHorizontal: 16,
+    paddingBottom: 100,
   },
   label: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 8,
+    fontSize: 14,
+    color: '#8483BC',
+    marginBottom: 6,
     fontWeight: '500',
   },
   infoBox: {
-    backgroundColor: '#F0F0F0',
-    padding: 16,
+    backgroundColor: '#E8E8FF',
+    padding: 12,
     borderRadius: 8,
-    marginBottom: 16,
+    marginBottom: 12,
   },
   infoText: {
-    fontSize: 18,
-    color: '#333',
+    fontSize: 16,
+    color: '#55547A',
     fontWeight: '600',
   },
 }); 

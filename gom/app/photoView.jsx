@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, SafeAreaView, ScrollView, Image } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import BottomNavigation from './components/BottomNavigation';
 
-export default function photoView() {
+export default function PhotoView() {
   const router = useRouter();
   const [activeTab, setActiveTab] = useState('titles');
 
@@ -90,6 +91,8 @@ export default function photoView() {
           : eventsByDate.map(event => renderEventPhotos(event))
         }
       </ScrollView>
+
+      <BottomNavigation />
     </SafeAreaView>
   );
 }
@@ -150,6 +153,7 @@ const styles = StyleSheet.create({
   eventTitle: {
     fontSize: 18,
     fontWeight: '600',
+    color: '#8483BC',
   },
   photoGrid: {
     flexDirection: 'row',
