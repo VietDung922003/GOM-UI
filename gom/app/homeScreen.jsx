@@ -31,13 +31,13 @@ export default function Home() {
   const events = [
     {
       id: 1,
-      date: '12/1',
+      date: '3/1',
       title: 'Lễ thành hôn của bạn An & Bích',
       image: require('../assets/images/event1.jpg'),
     },
     {
       id: 2,
-      date: '14/1',
+      date: '4/1',
       title: 'Tiệc kỷ niệm 10 năm ngày cưới của Cường & Dung',
       image: require('../assets/images/event2.jpg'),
     },
@@ -82,7 +82,7 @@ export default function Home() {
             {/* Events Section */}
             <View style={styles.section}>
               <View style={styles.sectionHeader}>
-                <Text style={styles.sectionTitle}>Sự kiện sắp tới</Text>
+                <Text style={styles.sectionTitle}>Những ký ức của tuần trước</Text>
                 <TouchableOpacity>
                   <Text style={styles.seeAll}>Xem tất cả »</Text>
                 </TouchableOpacity>
@@ -110,7 +110,10 @@ export default function Home() {
               <Ionicons name="home" size={24} color="#007AFF" />
               <Text style={[styles.navText, styles.activeNavText]}>Trang chủ</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity 
+              style={styles.navItem}
+              onPress={() => router.push('postView')}
+            >
               <Ionicons name="calendar" size={24} color="#666" />
               <Text style={styles.navText}>Ký ức</Text>
             </TouchableOpacity>
@@ -125,13 +128,19 @@ export default function Home() {
               </View>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity 
+              style={styles.navItem}
+              onPress={() => router.push('photoView')}
+            >
               <Ionicons name="images" size={24} color="#666" />
               <Text style={styles.navText}>Ảnh</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.navItem}>
+            <TouchableOpacity 
+              style={styles.navItem}
+              onPress={() => router.push('profileView')}
+            >
               <Ionicons name="person" size={24} color="#666" />
-              <Text style={styles.navText}>Profile</Text>
+              <Text style={styles.navText}>Tài khoản</Text>
             </TouchableOpacity>
           </View>
         </View>

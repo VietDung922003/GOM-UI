@@ -10,6 +10,7 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import React, { useState, useRef } from "react";
+import { useRouter } from 'expo-router';
 
 const SCREEN_HEIGHT = Dimensions.get("window").height;
 
@@ -83,6 +84,7 @@ const POSTS = [
 export default function PostView() {
   const [currentDotIndex, setCurrentDotIndex] = useState(7); // Start from most recent (last dot)
   const scrollViewRef = useRef(null);
+  const router = useRouter();
 
   const handleScroll = (event) => {
     const scrollPosition = event.nativeEvent.contentOffset.y;
@@ -108,14 +110,18 @@ export default function PostView() {
     <View key={post.id} style={styles.postContent}>
       <View style={styles.dateContainer}>
         <Text style={styles.dateText}>{post.date}</Text>
-        <TouchableOpacity style={styles.addInfoButton}>
-          <Text style={styles.addInfoText}>Thêm thông tin</Text>
-        </TouchableOpacity>
+        {post.id === 1 && (
+          <TouchableOpacity 
+            style={styles.addButton}
+            onPress={() => router.push('addPost')}
+          >
+            <Text style={styles.addButtonText}>Thêm kỷ niệm</Text>
+          </TouchableOpacity>
+        )}
       </View>
 
       <Text style={styles.location}>{post.location}</Text>
       <Text style={styles.time}>{post.time}</Text>
-
       <Text style={styles.description}>{post.description}</Text>
 
       <View style={styles.imageGrid}>
@@ -133,10 +139,14 @@ export default function PostView() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>GOM</Text>
-        <TouchableOpacity style={styles.menuButton}>
-          <Ionicons name="menu" size={24} color="#fff" />
+        <TouchableOpacity 
+          style={styles.backButton}
+          onPress={() => router.back()}
+        >
+          <Ionicons name="chevron-back" size={24} color="#fff" />
         </TouchableOpacity>
+        <Text style={styles.headerTitle}>Memory Book</Text>
+        <View style={{ width: 40 }} />
       </View>
 
       <ScrollView
@@ -171,28 +181,33 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    height: 90,
+    height: 60,
     backgroundColor: "#B1AFFF",
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 20,
-    paddingTop: 40,
-    position: "relative",
+    justifyContent: "space-between",
   },
   headerTitle: {
     color: "#fff",
     fontSize: 24,
     fontWeight: "bold",
-    position: "absolute",
-    width: "100%",
+    flex: 1,
     textAlign: "center",
-    left: 0,
-    zIndex: 1,
   },
-  menuButton: {
+  backButton: {
     padding: 5,
-    zIndex: 2,
-    marginLeft: "auto",
+  },
+  addButton: {
+    backgroundColor: '#B1AFFF',
+    paddingVertical: 8,
+    paddingHorizontal: 15,
+    borderRadius: 20,
+  },
+  addButtonText: {
+    color: '#FFFFFF',
+    fontSize: 14,
+    fontWeight: '600',
   },
   dateContainer: {
     flexDirection: "row",
@@ -205,16 +220,6 @@ const styles = StyleSheet.create({
   dateText: {
     fontSize: 20,
     color: "#B1AFFF",
-  },
-  addInfoButton: {
-    backgroundColor: "#B1AFFF",
-    paddingVertical: 8,
-    paddingHorizontal: 15,
-    borderRadius: 20,
-  },
-  addInfoText: {
-    color: "#fff",
-    fontSize: 14,
   },
   postContent: {
     paddingHorizontal: 20,

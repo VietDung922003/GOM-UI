@@ -1,5 +1,6 @@
 import SplashScreen from "./splashScreen";
-
+import HomeScreen from "./homeScreen";
 export default function Index() {
-  return <SplashScreen />;
+  return <HomeScreen />;
 }
+
