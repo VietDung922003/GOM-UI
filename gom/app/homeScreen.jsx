@@ -60,10 +60,34 @@ export default function Home() {
               />
             </View>
 
+            {/* Video Memory Section */}
+            <View style={styles.section}>
+              <View style={styles.sectionHeader}>
+                <Text style={styles.sectionTitle}>Tạo video hoài niệm</Text>
+                <TouchableOpacity>
+                  <Text style={styles.seeAll}>Xem tất cả »</Text>
+                </TouchableOpacity>
+              </View>
+              <View style={styles.eventsContainer}>
+                <TouchableOpacity 
+                  style={styles.eventCard}
+                  onPress={() => router.push('videoView')}
+                >
+                  <Image 
+                    source={require('../assets/images/anniversary.jpg')} 
+                    style={styles.videoMemoryImage} 
+                  />
+                  <View style={styles.addIconContainer}>
+                    <Ionicons name="add-circle" size={40} color="#B1AFFF" />
+                  </View>
+                </TouchableOpacity>
+              </View>
+            </View>
+
             {/* Services Section */}
             <View style={styles.section}>
               <View style={styles.sectionHeader}>
-                <Text style={styles.sectionTitle}>Tìm lại những ký ức của mình</Text>
+                <Text style={styles.sectionTitle}>Bạn còn nhớ không ?</Text>
                 <TouchableOpacity>
                   <Text style={styles.seeAll}>Xem tất cả »</Text>
                 </TouchableOpacity>
@@ -83,7 +107,7 @@ export default function Home() {
             {/* Events Section */}
             <View style={styles.section}>
               <View style={styles.sectionHeader}>
-                <Text style={styles.sectionTitle}>Những ký ức của tuần trước</Text>
+                <Text style={styles.sectionTitle}>Bạn còn nhớ không ?</Text>
                 <TouchableOpacity>
                   <Text style={styles.seeAll}>Xem tất cả »</Text>
                 </TouchableOpacity>
@@ -246,6 +270,9 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '500',
     color: '#7271AE',
+    backgroundColor: '#E8E8FF',
+    borderBottomLeftRadius: 12,
+    borderBottomRightRadius: 12,
   },
   bottomNav: {
     position: 'absolute',
@@ -290,7 +317,7 @@ const styles = StyleSheet.create({
   captureButtonInner: {
     width: 52,
     height: 52,
-    borderRadius: 26,
+    borderRadius: 50,
     backgroundColor: '#B1AFFF',
     justifyContent: 'center',
     alignItems: 'center',
@@ -307,8 +334,22 @@ const styles = StyleSheet.create({
     position: 'absolute',
     width: 44,
     height: 44,
-    borderRadius: 22,
+    borderRadius: 30,
     backgroundColor: '#FFFFFF',
     opacity: 0.3,
+  },
+  videoMemoryImage: {
+    width: '100%',
+    height: 150,
+    borderTopLeftRadius: 12,
+    borderTopRightRadius: 12,
+  },
+  addIconContainer: {
+    position: 'absolute',
+    bottom: 12,
+    alignSelf: 'center',
+    backgroundColor: '#FFFFFF',
+    borderRadius: 30,
+    padding: 8,
   },
 }); 
