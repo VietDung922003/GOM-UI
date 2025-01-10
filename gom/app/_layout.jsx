@@ -21,6 +21,36 @@ export default function RootLayout() {
           headerShown: false,
         }}
       />
+      <Stack.Screen
+        name="homeScreen"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="postView"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="photoView"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="profileView"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="addPost"
+        options={{
+          headerShown: false,
+        }}
+      />
     </Stack>
   );
 }

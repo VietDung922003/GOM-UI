@@ -1,10 +1,12 @@
 import { CameraView, useCameraPermissions } from 'expo-camera';
-import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, {useState, useRef, useEffect} from 'react';
 import * as MediaLibrary from 'expo-media-library';
+import { useRouter } from 'expo-router';
 import Button from '../components/Button';
 
 export default function cameraView() {
+  const router = useRouter();
  const [cameraPermission, requestCameraPermission] = useCameraPermissions();
  const [mediaLibraryPermission, requestMediaLibraryPermission] = MediaLibrary.usePermissions();
  const [cameraProps,setCameraProps] = useState({
@@ -55,7 +57,7 @@ export default function cameraView() {
  return (
    <View style={styles.container}>
      <View style={styles.topControlsContainer}>
-       <Button icon='arrow-back-circle-outline'/>
+       <Button icon='arrow-back-circle-outline' onPress={() => router.back()}/>
        <Text style={styles.text}>GOM</Text>
        <View style={styles.smallContainer}>
          <Button icon={cameraProps.flash === 'on' ? 'flash-sharp' : 'flash-off-sharp'} onPress={()=>toggleProperty('flash', 'on', 'off')}/>
@@ -118,10 +120,11 @@ const styles = StyleSheet.create({
    flexDirection: 'row',
    justifyContent: 'space-between',
    alignItems: 'center',
-   paddingHorizontal: 20
+   paddingHorizontal: 20,
+   marginTop: 35,
  },
  bottomControlsContainer: {
-   height: 150,
+   height: 180,
    backgroundColor: '#B1AFFF',
    flexDirection: 'row',
    justifyContent: 'space-around',

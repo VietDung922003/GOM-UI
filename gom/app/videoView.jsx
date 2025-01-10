@@ -3,9 +3,12 @@ import { Image, StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import React, {useState, useRef, useEffect} from 'react';
 import * as MediaLibrary from 'expo-media-library';
 import {Ionicons} from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
+
 import Button from './../components/Button';
 
 export default function videoView() {
+    const router = useRouter();
  const [cameraPermission, requestCameraPermission] = useCameraPermissions();
  const [mediaLibraryPermission, requestMediaLibraryPermission] = MediaLibrary.usePermissions();
  const [cameraProps,setCameraProps] = useState({
@@ -64,7 +67,7 @@ export default function videoView() {
      </View>
 
      <View style={styles.buttonPosition}>
-       <Button icon='arrow-back-circle-outline' size={30} color='#B1AFFF'/>
+       <Button icon='arrow-back-circle-outline' size={30} color='#B1AFFF' onPress={()=> router.back()}/>
        <View style={{height: 40, width: 160, borderRadius: 24, backgroundColor: '#B1AFFF24', flexDirection: 'row', alignItems: 'center', justifyContent: 'center', gap: 5}}>
          <Ionicons size={20} color={'#B1AFFF'} name="musical-notes"/>
          <Text style={{fontFamily: 'Inter', fontWeight: 400, fontSize: 17, lineHeight: 22, textAlign: 'center', color: '#B1AFFF'}}>Thêm âm thanh</Text>
