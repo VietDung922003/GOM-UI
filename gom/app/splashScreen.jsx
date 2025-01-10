@@ -35,7 +35,7 @@ export default function SplashScreen() {
 
       <TouchableOpacity
         style={styles.button}
-        onPress={() => router.push("/cameraView")}
+        onPress={() => router.push("/homeScreen")}
       >
         <Text style={styles.buttonText}>Nhấn để vào</Text>
       </TouchableOpacity>
